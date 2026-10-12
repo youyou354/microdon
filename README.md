@@ -18,9 +18,11 @@ cd devoir1 && mvn test
 ## Devoir 2 — `social.model`
 
 The model reworked around an interface `Post` with two implementations, `SimplePost` and `RePost`
-(sharing someone else's post), and a generic **`FusionSortedIterator`**: it merges several iterators that are
-each already sorted into a single sorted stream — the news feed is the fusion of the timelines of the people
-you follow — and supports going back and forth (`ListIterator`), including after a `remove`.
+(sharing someone else's post), and a generic **`FusionSortedIterator`**: the news feed is the fusion of the timelines of the people you
+follow. Mine gathers the elements of every timeline into one list, sorts it with the comparator, then walks
+it back and forth (`ListIterator`: `next`, `previous`, indices); at each step it also advances the timeline the
+post came from and remembers it (`lastIterator`). The structural operations (`remove`, `set`, `add`) are
+unsupported.
 
 | mine | given with the subject |
 |------|------------------------|
